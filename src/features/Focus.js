@@ -1,18 +1,31 @@
-import React from 'react'
-import { View, Text, StyleSheet} from 'react-native'
-import { colors } from "../utils/colors"
+import React, {useState} from "react";
+import {View, Text, StyleSheet} from "react-native";
+import {TextInput} from "react-native-paper";
+import {RoundedButton} from "../components/RoundedButton";
 
-export const Focus = () => (
-  <View style={styles.container}>
-    <Text style={styles.text}>Focus Feature</Text>
-  </View>
-)
+export const Focus = () => {
+  const [text, setText] = useState("");
 
-const styles = StyleSheet.create( {
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.inputContainer}
+        label="What would you like to focus on?"
+        value={text}
+        onChangeText={setText}
+      />
+      <RoundedButton title="😆" size={50} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
-  text: {
-    color: colors.white
-  }
-})
+  inputContainer: {
+    padding: 5,
+    height: 50,
+    justifyContent: "flex-start",
+  },
+});
